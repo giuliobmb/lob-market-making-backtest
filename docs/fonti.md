@@ -8,6 +8,29 @@
 - Moallemi, C., Yuan, K. (2017). *A model for queue position valuation in a limit order book*. Working paper.
 - Ntakaris, A., Magris, M., Kanniainen, J., Gabbouj, M., Iosifidis, A. (2018). *Benchmark dataset for mid-price forecasting of limit order book data with machine learning methods*. Journal of Forecasting 37(8).
 
+## Fonti aggiunte (citate nei notebook)
+
+| Riferimento | Dove e perché è citato |
+|---|---|
+| Ho, T., Stoll, H. R. (1981). *Optimal dealer pricing under transactions and return uncertainty*. Journal of Financial Economics 9(1). | 00: origine del rischio di inventario del market maker. |
+| Cartea, Á., Jaimungal, S., Penalva, J. (2015). *Algorithmic and High-Frequency Trading*. Cambridge University Press. | 00: liquidazione dell'inventario residuo a fine orizzonte. |
+| Glosten, L. R., Milgrom, P. R. (1985). *Bid, ask and transaction prices in a specialist market with heterogeneously informed traders*. Journal of Financial Economics 14(1). | 00, 04, glossario: selezione avversa, causa principale delle perdite. |
+| Cont, R., Stoikov, S., Talreja, R. (2010). *A stochastic model for order book dynamics*. Operations Research 58(3). | 02, 04: l'esecuzione dipende dalla coda, assente nei dati L2. |
+| Gould, M. D. et al. (2013). *Limit order books*. Quantitative Finance 13(11). | Bibliografia: rassegna di riferimento sui book. |
+| Bouchaud, J.-P., Bonart, J., Donier, J., Gould, M. (2018). *Trades, Quotes and Prices*. Cambridge University Press. | Bibliografia: microstruttura e dinamica della coda. |
+| Cont, R., Kukanov, A., Stoikov, S. (2014). *The price impact of order book events*. Journal of Financial Econometrics 12(1). | 04, 06: base del filtro di imbalance. |
+| Cartea, Á., Donnelly, R., Jaimungal, S. (2018). *Enhancing trading strategies with order book signals*. Applied Mathematical Finance 25(1). | 04, 06: uso dell'imbalance nelle strategie. |
+| Hasbrouck, J., Saar, G. (2013). *Low-latency trading*. Journal of Financial Markets 16(4). | 06: importanza della velocità. |
+| Budish, E., Cramton, P., Shim, J. (2015). *The high-frequency trading arms race*. Quarterly Journal of Economics 130(4). | 06: competizione sulla latenza. |
+| Menkveld, A. J. (2013). *High frequency trading and the new market makers*. Journal of Financial Markets 16(4). | 06: comportamento di un market maker reale. |
+| Bailey, D. H., Borwein, J. M., López de Prado, M., Zhu, Q. J. (2017). *The probability of backtest overfitting*. Journal of Computational Finance 20(4). | 00: motivazione della divisione cronologica dei dati. |
+| Efron, B., Tibshirani, R. J. (1993). *An Introduction to the Bootstrap*. Chapman & Hall. | Glossario: intervalli di confidenza bootstrap. |
+
+La strategia non implementa i modelli ottimi di Avellaneda e Stoikov (2008) o di
+Guéant, Lehalle e Fernandez-Tapia (2013): ne riprende solo due risultati qualitativi
+(il rischio di inventario cresce con la volatilità; le quote vanno spostate in base
+all'inventario), tradotti nel filtro di volatilità e nella variante di inventory skew.
+
 ## Fonti dei dati
 
 | Dataset | Origine | Riferimento |

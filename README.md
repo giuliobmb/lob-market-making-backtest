@@ -70,13 +70,19 @@ non rientra. Finestra e soglia (quantile 50%, 75% o 90% della volatilità di
 calibrazione) sono scelte in validazione; l'ablazione misura il contributo del
 filtro ripetendo il test con la strategia sempre attiva.
 
+La regola non implementa un modello ottimo ma ne riprende i risultati qualitativi:
+rischio di inventario crescente con la volatilità (Ho e Stoll, 1981; Avellaneda e
+Stoikov, 2008), inventario limitato (Guéant, Lehalle e Fernandez-Tapia, 2013),
+perdite per selezione avversa (Glosten e Milgrom, 1985). La bibliografia completa è
+in fondo al notebook 06 e in [`docs/fonti.md`](docs/fonti.md).
+
 ### Varianti (estensione)
 
-- **Inventory skew:** dopo un fill su un solo lato non si liquida a mercato alla
+- **Inventory skew** (Avellaneda e Stoikov, 2008): dopo un fill su un solo lato non si liquida a mercato alla
   scadenza; si mantiene una quota passiva solo sul lato che riduce l'inventario,
   al best migliorato di *k* tick se lo spread lo consente, e si liquida a mercato
   solo dopo un tempo massimo di detenzione (o con volatilità sopra soglia).
-- **Filtro di imbalance:** con I = (q_bid − q_ask)/(q_bid + q_ask) al best, si
+- **Filtro di imbalance** (Cont, Kukanov e Stoikov, 2014): con I = (q_bid − q_ask)/(q_bid + q_ask) al best, si
   apre una coppia solo se |I| ≤ θ e si cancella una quota quando l'imbalance la
   minaccia (I > θ per una vendita, I < −θ per un acquisto).
 

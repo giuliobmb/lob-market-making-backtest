@@ -13,14 +13,19 @@ Regola operativa base (identica in tutti gli esperimenti principali):
   per ``quote_size`` (una coppia alla volta);
 * alla scadenza della coppia cancella e liquida l'inventario residuo.
 
+La regola riprende risultati qualitativi della letteratura senza implementarne i
+modelli ottimi: il rischio di inventario cresce con la volatilita (Ho e Stoll, 1981;
+Avellaneda e Stoikov, 2008) e l'inventario va tenuto limitato (Gueant, Lehalle e
+Fernandez-Tapia, 2013).
+
 Varianti (estensioni, disattivate per default):
 
-* **inventory skew** (``inventory_mode="skew"``): dopo un fill su un solo lato,
+* **inventory skew** (``inventory_mode="skew"``, cfr. Avellaneda e Stoikov, 2008): dopo un fill su un solo lato,
   alla scadenza non si liquida a mercato ma si mantiene una quota passiva solo sul
   lato che riduce l'inventario, al best corrente migliorato di ``skew_ticks`` tick
   se lo spread lo consente (mai attraverso il book). Si liquida a mercato solo
   dopo ``max_hold_factor`` durate della quota o con volatilita sopra soglia;
-* **filtro di imbalance** (``imbalance_threshold``): con I = (q_bid - q_ask) /
+* **filtro di imbalance** (``imbalance_threshold``, cfr. Cont, Kukanov e Stoikov, 2014): con I = (q_bid - q_ask) /
   (q_bid + q_ask) al best, si apre una coppia solo se |I| <= soglia; una quota
   viva viene cancellata se l'imbalance la minaccia (I > soglia per una vendita,
   I < -soglia per un acquisto), cioe se il prezzo tende a muoversi attraverso di essa.
