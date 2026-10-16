@@ -202,3 +202,105 @@ def variant_effect(test: pd.DataFrame, variants: pd.DataFrame, dataset: str, val
             "liquidazioni a mercato": frame["taker_fills"].mean(),
         })
     return pd.DataFrame(rows).set_index("variante")
+
+
+# --- presentazione leggibile ------------------------------------------------------------------
+UNITS = {"fi2010": "osservazioni", "itch": "secondi", "hyperliquid": "eventi"}
+
+
+def show_box(title: str, lines: list[str]) -> None:
+    """Riquadro di sintesi in testa ai notebook."""
+    from IPython.display import Markdown, display
+    body = "\n".join(f"> - {line}" for line in lines)
+    display(Markdown(f"> **{title}**\n>\n{body}"))
+
+
+def ci_text(mean: float, low: float, high: float, decimals: int = 0) -> str:
+    """Media con intervallo di confidenza: "-541 (-660; -435)"."""
+    return f"{it(mean, decimals)} ({it(low, decimals)}; {it(high, decimals)})"
+
+
+def params_text(dataset: str, params: dict) -> str:
+    """Parametri della strategia descritti a parole."""
+    unit = UNITS.get(dataset, "record")
+    parts = []
+    if "volatility_window" in params:
+        parts.append(f"volatilità su una finestra di {it(params['volatility_window'])} {unit}")
+    if "vol_quantile" in params:
+        parts.append(f"si opera solo sotto il {round(100 * params['vol_quantile'])}° percentile della volatilità di calibrazione")
+    if "max_order_age_ns" in params:
+        parts.append(f"ogni quota resta nel book al massimo {it(params['max_order_age_ns'] / 1e9)} s")
+    if "max_order_age_events" in params:
+        parts.append(f"ogni quota resta nel book al massimo {it(params['max_order_age_events'])} {unit}")
+    if params.get("inventory_mode") == "skew":
+        ticks = params.get("skew_ticks", 0)
+        where = "al miglior prezzo corrente" if ticks == 0 else f"migliorate di {ticks} tick"
+        parts.append(f"inventario smaltito con quote passive {where}, liquidazione a mercato solo dopo "
+                     f"{params.get('max_hold_factor')} volte la durata di una quota")
+    if params.get("imbalance_threshold") is not None:
+        parts.append(f"si quota solo con imbalance |I| ≤ {it(params['imbalance_threshold'], 1)}")
+    return "; ".join(parts)
+
+
+def results_table(stats: pd.DataFrame, decimals: int = 0) -> pd.DataFrame:
+    """Da ``model_table``: P&L medio con IC e quota di sessioni positive."""
+    return pd.DataFrame({
+        "P&L medio per sessione (IC 95%)": [ci_text(r.media, r.ic95_basso, r.ic95_alto, decimals)
+                                            for r in stats.itertuples()],
+        "sessioni positive": [pct(r.quota_positive, 0) for r in stats.itertuples()],
+        "sessioni": [int(r.sessioni) for r in stats.itertuples()],
+    }, index=stats.index)
+
+
+def decomposition_table(dec: pd.DataFrame, decimals: int = 2) -> pd.DataFrame:
+    """Da ``decomposition``: da dove viene il P&L, con nomi espliciti."""
+    out = pd.DataFrame(index=dec.index)
+    out["spread incassato (edge maker)"] = dec["maker_edge"]
+    out["costo di liquidazione"] = dec["liquidation_cost"]
+    out["movimento del prezzo sull'inventario"] = dec["inventory_pnl"]
+    out["= P&L lordo"] = dec["final_equity"]
+    if "fees" in dec:
+        out["commissioni e rebate"] = dec["fees"]
+        out["= P&L netto"] = dec["net"]
+    return out.map(lambda v: it(v, decimals))
+
+
+def filter_table(effect: pd.DataFrame, decimals: int = 1) -> pd.DataFrame:
+    """Da ``filter_effect``: con filtro di volatilità contro strategia sempre attiva."""
+    return pd.DataFrame({
+        "con filtro": effect["con filtro"].map(lambda v: it(v, decimals)),
+        "sempre attiva": effect["sempre attiva"].map(lambda v: it(v, decimals)),
+        "differenza (IC 95%)": [ci_text(r["differenza"], r["IC95 basso"], r["IC95 alto"], decimals)
+                                for _, r in effect.iterrows()],
+        "sessioni migliori con filtro": effect["sessioni migliori con filtro"].map(lambda v: pct(v, 0)),
+        "tempo in cui opera": effect["quota record attivi"].map(lambda v: pct(v, 0)),
+    })
+
+
+def variants_table(effect: pd.DataFrame, decimals: int = 1) -> pd.DataFrame:
+    """Da ``variant_effect``: varianti contro strategia base."""
+    return pd.DataFrame({
+        "P&L netto medio (IC 95%)": [ci_text(r["P&L netto medio"], r["IC95 basso"], r["IC95 alto"], decimals)
+                                     for _, r in effect.iterrows()],
+        "sessioni positive": effect["sessioni positive"].map(lambda v: pct(v, 0)),
+        "differenza vs base (IC 95%)": ["—" if name == "base" else
+                                        ci_text(r["differenza vs base"], r["diff IC95 basso"], r["diff IC95 alto"], decimals)
+                                        for name, r in effect.iterrows()],
+        "liquidazioni a mercato per sessione": effect["liquidazioni a mercato"].map(lambda v: it(v, 0)),
+    })
+
+
+def fill_rates_table(rates: pd.DataFrame) -> pd.DataFrame:
+    """Da ``fill_rates``: esito delle coppie di quote."""
+    out = pd.DataFrame({"coppie quotate": rates["coppie"].map(lambda v: it(v))})
+    for col, label in [("bilaterali", "entrambi i lati eseguiti"), ("unilaterali", "un solo lato eseguito"),
+                       ("senza fill", "nessun lato eseguito"), ("con fill parziale", "con fill parziale")]:
+        out[label] = rates[col].map(lambda v: pct(v, 0))
+    return out
+
+
+def nel(value, decimals: int = 0) -> str:
+    """Percentuale con la preposizione corretta: "nell'85%", "nel 56%"."""
+    text = pct(value, decimals)
+    elided = text.startswith(("8", "11", "1%", "1,")) and not text.startswith(("18", "1%0"))
+    return f"nell'{text}" if elided else f"nel {text}"
