@@ -1,0 +1,17 @@
+{
+  "quote_size": 1.0,
+  "volatility_window": 3,
+  "volatility_min_periods": 2,
+  "volatility_threshold": 1000000.0,
+  "volatility_method": "rolling",
+  "return_type": "diff",
+  "ewma_lambda": 0.94,
+  "max_order_age_events": 20,
+  "max_order_age_ns": null,
+  "quote_offset_ticks": 0,
+  "tick_size": null,
+  "maker_fee_bps": 0.0,
+  "taker_fee_bps": 0.0,
+  "liquidation_mode": "market",
+  "max_abs_inventory": 1.0
+}

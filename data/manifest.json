@@ -1,0 +1,205 @@
+{
+  "data/raw/fi2010/fi2010_day01.txt": {
+    "accessed": "2026-10-14",
+    "bytes": 94196906,
+    "note": "BenchmarkDatasets.zip:BenchmarkDatasets/NoAuction/3.NoAuction_DecPre/NoAuction_DecPre_Training/Train_Dst_NoAuction_DecPre_CF_1.txt",
+    "sha256": "96faf8a06beced9c1b6a054915c39d68b75150aca58c23950e0d450ebf5a656c",
+    "source": "https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649"
+  },
+  "data/raw/fi2010/fi2010_day02.txt": {
+    "accessed": "2026-10-14",
+    "bytes": 91538746,
+    "note": "BenchmarkDatasets.zip:BenchmarkDatasets/NoAuction/3.NoAuction_DecPre/NoAuction_DecPre_Testing/Test_Dst_NoAuction_DecPre_CF_1.txt",
+    "sha256": "c8d3ec2797ade80bdd3c71576e06d9024064d07c3a1eac4e4cb3dd5ca7a89a94",
+    "source": "https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649"
+  },
+  "data/raw/fi2010/fi2010_day03.txt": {
+    "accessed": "2026-10-14",
+    "bytes": 68027738,
+    "note": "BenchmarkDatasets.zip:BenchmarkDatasets/NoAuction/3.NoAuction_DecPre/NoAuction_DecPre_Testing/Test_Dst_NoAuction_DecPre_CF_2.txt",
+    "sha256": "dfa555b3156483de692c5c71aba642dc5f11aee78ca606da1f3d9810408117e4",
+    "source": "https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649"
+  },
+  "data/raw/fi2010/fi2010_day04.txt": {
+    "accessed": "2026-10-14",
+    "bytes": 88263130,
+    "note": "BenchmarkDatasets.zip:BenchmarkDatasets/NoAuction/3.NoAuction_DecPre/NoAuction_DecPre_Testing/Test_Dst_NoAuction_DecPre_CF_3.txt",
+    "sha256": "87603c68ff2f230b0e5125180cf6dbc8c1ce5119a0d6b518c447968b6ccd952a",
+    "source": "https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649"
+  },
+  "data/raw/fi2010/fi2010_day05.txt": {
+    "accessed": "2026-10-14",
+    "bytes": 82927738,
+    "note": "BenchmarkDatasets.zip:BenchmarkDatasets/NoAuction/3.NoAuction_DecPre/NoAuction_DecPre_Testing/Test_Dst_NoAuction_DecPre_CF_4.txt",
+    "sha256": "9e16475ea7c56bf4f98b5de7eb79ddda31c34d447e552ce092ab3005bfb22afb",
+    "source": "https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649"
+  },
+  "data/raw/fi2010/fi2010_day06.txt": {
+    "accessed": "2026-10-14",
+    "bytes": 93338666,
+    "note": "BenchmarkDatasets.zip:BenchmarkDatasets/NoAuction/3.NoAuction_DecPre/NoAuction_DecPre_Testing/Test_Dst_NoAuction_DecPre_CF_5.txt",
+    "sha256": "4d67ac0cbbea352bc0c62f0ddab8a56d35fe4d58cd01ac1872f2a232622fb068",
+    "source": "https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649"
+  },
+  "data/raw/fi2010/fi2010_day07.txt": {
+    "accessed": "2026-10-14",
+    "bytes": 89033162,
+    "note": "BenchmarkDatasets.zip:BenchmarkDatasets/NoAuction/3.NoAuction_DecPre/NoAuction_DecPre_Testing/Test_Dst_NoAuction_DecPre_CF_6.txt",
+    "sha256": "789f59eb068f4438b6a84403753349716719e3640ba22badc9eac6d757dac71b",
+    "source": "https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649"
+  },
+  "data/raw/fi2010/fi2010_day08.txt": {
+    "accessed": "2026-10-14",
+    "bytes": 132259850,
+    "note": "BenchmarkDatasets.zip:BenchmarkDatasets/NoAuction/3.NoAuction_DecPre/NoAuction_DecPre_Testing/Test_Dst_NoAuction_DecPre_CF_7.txt",
+    "sha256": "1acd92e13df8f499aa9475729e1d54455db1ab37894616d0c582cdd012351273",
+    "source": "https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649"
+  },
+  "data/raw/fi2010/fi2010_day09.txt": {
+    "accessed": "2026-10-14",
+    "bytes": 124378346,
+    "note": "BenchmarkDatasets.zip:BenchmarkDatasets/NoAuction/3.NoAuction_DecPre/NoAuction_DecPre_Testing/Test_Dst_NoAuction_DecPre_CF_8.txt",
+    "sha256": "950559383a3cf823fd373e6573434cc00c94b9bceac77fe5ee9f1adb38e1abb2",
+    "source": "https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649"
+  },
+  "data/raw/fi2010/fi2010_day10.txt": {
+    "accessed": "2026-10-14",
+    "bytes": 76138106,
+    "note": "BenchmarkDatasets.zip:BenchmarkDatasets/NoAuction/3.NoAuction_DecPre/NoAuction_DecPre_Testing/Test_Dst_NoAuction_DecPre_CF_9.txt",
+    "sha256": "c09785b0aed0825ad566f8fe33a3b7d8c3fbb8993856d162976cb4e1c410aca0",
+    "source": "https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649"
+  },
+  "data/raw/hyperliquid/book_diffs_20251201_08.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 64756049,
+    "note": "membro 20251201/ex8.gz del tar",
+    "sha256": "9a8235470781af2cb420c70933ea20fe1d95d5bec67a89dd520a852dd9c1715f",
+    "source": "https://zenodo.org/api/records/18184441/files/book_diffs_202512.tar/content"
+  },
+  "data/raw/hyperliquid/book_diffs_20251201_14.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 129321447,
+    "note": "membro 20251201/ex14.gz del tar",
+    "sha256": "24e92d0ed4f33ce45f2c484cc26902169997913046c0a456fea467cd8ce4d8dd",
+    "source": "https://zenodo.org/api/records/18184441/files/book_diffs_202512.tar/content"
+  },
+  "data/raw/hyperliquid/book_diffs_20251202_08.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 70060584,
+    "note": "membro 20251202/ex8.gz del tar",
+    "sha256": "f248227acee090439f538a2e57ad9129da012a22f301051523fcb29aeacbc35c",
+    "source": "https://zenodo.org/api/records/18184441/files/book_diffs_202512.tar/content"
+  },
+  "data/raw/hyperliquid/book_diffs_20251202_14.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 157562570,
+    "note": "membro 20251202/ex14.gz del tar",
+    "sha256": "84e8dc83a49c14766830e137d457689aab725edcda9df153810facb40c79521f",
+    "source": "https://zenodo.org/api/records/18184441/files/book_diffs_202512.tar/content"
+  },
+  "data/raw/hyperliquid/book_diffs_20251203_08.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 69119095,
+    "note": "membro 20251203/ex8.gz del tar",
+    "sha256": "ebd2bcd369bec97a1c2d81baf5bbccc778bc212f187d81909aabfa77e807efd6",
+    "source": "https://zenodo.org/api/records/18184441/files/book_diffs_202512.tar/content"
+  },
+  "data/raw/hyperliquid/book_diffs_20251203_14.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 187398301,
+    "note": "membro 20251203/ex14.gz del tar",
+    "sha256": "6fb849dd9456d4b856227c0cc4e510963814cd78a6391877e3d4d82f75f011e7",
+    "source": "https://zenodo.org/api/records/18184441/files/book_diffs_202512.tar/content"
+  },
+  "data/raw/hyperliquid/trades_20251201_08.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 11851696,
+    "note": "membro 20251201/8.gz del tar",
+    "sha256": "879f4f8d0403dfdfe85b459a754fa9efc7d43309f1109330dc6bd800b4e7fca0",
+    "source": "https://zenodo.org/api/records/18184441/files/trades_2025_12.tar/content"
+  },
+  "data/raw/hyperliquid/trades_20251201_14.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 19187762,
+    "note": "membro 20251201/14.gz del tar",
+    "sha256": "ec87ed45e32b630ccf6f07267376c62bc785172fcc13bf58d19d35578e7c75bb",
+    "source": "https://zenodo.org/api/records/18184441/files/trades_2025_12.tar/content"
+  },
+  "data/raw/hyperliquid/trades_20251202_08.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 12945546,
+    "note": "membro 20251202/8.gz del tar",
+    "sha256": "cf5c870a09a781519d1ad668bf281f6a7d3585ad877385cc18f77efb27413b69",
+    "source": "https://zenodo.org/api/records/18184441/files/trades_2025_12.tar/content"
+  },
+  "data/raw/hyperliquid/trades_20251202_14.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 26916324,
+    "note": "membro 20251202/14.gz del tar",
+    "sha256": "fba31bb478bedf3c05e9192ea960ef53e4755b4af3f10de639aed6200df4ffcf",
+    "source": "https://zenodo.org/api/records/18184441/files/trades_2025_12.tar/content"
+  },
+  "data/raw/hyperliquid/trades_20251203_08.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 12267112,
+    "note": "membro 20251203/8.gz del tar",
+    "sha256": "1d0ed22dc9a41a83c938a66c8b8ab71debd659458f5fcb5c83aaa1ba20e31013",
+    "source": "https://zenodo.org/api/records/18184441/files/trades_2025_12.tar/content"
+  },
+  "data/raw/hyperliquid/trades_20251203_14.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 29971140,
+    "note": "membro 20251203/14.gz del tar",
+    "sha256": "fcf68232df9b0379e4de2eddc169bc8828a16228f8cdffa8fe7197148d2c2349",
+    "source": "https://zenodo.org/api/records/18184441/files/trades_2025_12.tar/content"
+  },
+  "data/raw/itch/01302019.NASDAQ_ITCH50.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 4764426091,
+    "note": "file giornaliero completo",
+    "sha256": "8c97b5b13bc451c012c2466fb7e258da134dab29aa47b67fe7b0088c78e870be",
+    "source": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/01302019.NASDAQ_ITCH50.gz"
+  },
+  "data/raw/itch/01302020.NASDAQ_ITCH50.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 5597158940,
+    "note": "file giornaliero completo",
+    "sha256": "8f5399155242f8d84338c36fdd78a47c0b0aa3df5707829b20c5158c258364c6",
+    "source": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/01302020.NASDAQ_ITCH50.gz"
+  },
+  "data/raw/itch/03272019.NASDAQ_ITCH50.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 5510131732,
+    "note": "file giornaliero completo",
+    "sha256": "7997025b9e09dd6c2ecb0bfa48a856197e6e800711ab67367ee0f2ab724b9ba8",
+    "source": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/03272019.NASDAQ_ITCH50.gz"
+  },
+  "data/raw/itch/07302019.NASDAQ_ITCH50.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 3662140094,
+    "note": "file giornaliero completo",
+    "sha256": "c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a",
+    "source": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/07302019.NASDAQ_ITCH50.gz"
+  },
+  "data/raw/itch/08302019.NASDAQ_ITCH50.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 4075649457,
+    "note": "file giornaliero completo",
+    "sha256": "2f6639a37487f377851883ed54171f5565f164556c1855a28abc8475ce408b47",
+    "source": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/08302019.NASDAQ_ITCH50.gz"
+  },
+  "data/raw/itch/10302019.NASDAQ_ITCH50.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 3872931242,
+    "note": "file giornaliero completo",
+    "sha256": "0ad86b61a0eb7f1bce2cffca0e08c8658026451c68657ea6b06f61ff3710b999",
+    "source": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/10302019.NASDAQ_ITCH50.gz"
+  },
+  "data/raw/itch/12302019.NASDAQ_ITCH50.gz": {
+    "accessed": "2026-10-14",
+    "bytes": 3524013057,
+    "note": "file giornaliero completo",
+    "sha256": "ef03df46a27e6bda4dead017f84c2e3979df7211f02c7868b51d53fceb99c689",
+    "source": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/12302019.NASDAQ_ITCH50.gz"
+  }
+}

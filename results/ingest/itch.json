@@ -1,0 +1,116 @@
+{
+  "sessions": [
+    {
+      "session": "2019-01-30",
+      "messages": 367006026,
+      "last_timestamp_symbols": 57758567081366,
+      "last_timestamp_stream": 57758615167310,
+      "truncated_tail_bytes": 12,
+      "symbols_found": 3,
+      "rows": {
+        "AAPL": 1653277,
+        "MSFT": 1600176,
+        "INTC": 1161669
+      },
+      "seconds": 276.3781849999941,
+      "messages_per_second": 1327912.4255049573,
+      "coverage_end": "16:02:38.567081"
+    },
+    {
+      "session": "2019-03-27",
+      "messages": 419893359,
+      "last_timestamp_symbols": 57600334611713,
+      "last_timestamp_stream": 57600335007412,
+      "truncated_tail_bytes": 12,
+      "symbols_found": 3,
+      "rows": {
+        "AAPL": 1966458,
+        "MSFT": 2113745,
+        "INTC": 1404955
+      },
+      "seconds": 311.91306610000174,
+      "messages_per_second": 1346187.1419819873,
+      "coverage_end": "16:00:00.334611"
+    },
+    {
+      "session": "2019-07-30",
+      "messages": 280349474,
+      "last_timestamp_symbols": 57601522534810,
+      "last_timestamp_stream": 57601522534810,
+      "truncated_tail_bytes": 0,
+      "symbols_found": 3,
+      "rows": {
+        "AAPL": 1231999,
+        "MSFT": 1198918,
+        "INTC": 811546
+      },
+      "seconds": 209.77528309999616,
+      "messages_per_second": 1336427.5802996408,
+      "coverage_end": "16:00:01.522534"
+    },
+    {
+      "session": "2019-08-30",
+      "messages": 308992335,
+      "last_timestamp_symbols": 57602088400637,
+      "last_timestamp_stream": 57602203000617,
+      "truncated_tail_bytes": 12,
+      "symbols_found": 3,
+      "rows": {
+        "AAPL": 1190065,
+        "MSFT": 1552841,
+        "INTC": 970055
+      },
+      "seconds": 233.97346760000073,
+      "messages_per_second": 1320629.8054626046,
+      "coverage_end": "16:00:02.088400"
+    },
+    {
+      "session": "2019-10-30",
+      "messages": 291085979,
+      "last_timestamp_symbols": 57600134864037,
+      "last_timestamp_stream": 57600135247948,
+      "truncated_tail_bytes": 20,
+      "symbols_found": 3,
+      "rows": {
+        "AAPL": 734884,
+        "MSFT": 1210066,
+        "INTC": 919429
+      },
+      "seconds": 218.8315505999999,
+      "messages_per_second": 1330182.865322164,
+      "coverage_end": "16:00:00.134864"
+    },
+    {
+      "session": "2019-12-30",
+      "messages": 267130798,
+      "last_timestamp_symbols": 57601186352138,
+      "last_timestamp_stream": 57601186485247,
+      "truncated_tail_bytes": 12,
+      "symbols_found": 3,
+      "rows": {
+        "AAPL": 1485761,
+        "MSFT": 1193969,
+        "INTC": 742360
+      },
+      "seconds": 202.97753050000028,
+      "messages_per_second": 1316060.9321729806,
+      "coverage_end": "16:00:01.186352"
+    },
+    {
+      "session": "2020-01-30",
+      "messages": 419321372,
+      "last_timestamp_symbols": 57600287609582,
+      "last_timestamp_stream": 57600287965234,
+      "truncated_tail_bytes": 12,
+      "symbols_found": 3,
+      "rows": {
+        "AAPL": 1960587,
+        "MSFT": 1798035,
+        "INTC": 1587095
+      },
+      "seconds": 312.944038600006,
+      "messages_per_second": 1339924.4602194251,
+      "coverage_end": "16:00:00.287609"
+    }
+  ]
+}

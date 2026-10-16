@@ -1,0 +1,6 @@
+esperimento,granularita,record,ordini_inseriti,ordini_cancellati,fill_maker,fill_taker,fill_totali,equity_finale,commissioni
+FI-2010 touch,L2,60,24,2,22,2,24,0.010800000000000087,0.0
+FI-2010 price-through,L2,60,8,3,5,3,8,-9.999999999998899e-05,0.0
+Nasdaq ITCH controllato,L3,10,4,2,2,0,2,0.010000000000005116,0.0
+Hyperliquid controllato,L4,10,4,2,2,0,2,0.09999999999999432,0.0
+Hyperliquid reale book diff (non valutabile),L4 senza trade,500,50,50,0,0,0,0.0,0.0

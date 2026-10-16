@@ -1,0 +1,82 @@
+{
+  "sessions": [
+    {
+      "session": "20251201T08",
+      "rows": 2405368,
+      "diffs": 2420117,
+      "unknown_order_diffs": 14751,
+      "fill_events": 17444,
+      "fill_volume": 826.4803500000758,
+      "cancel_events": 1186941,
+      "cancel_volume": 1271404.905480175,
+      "trade_volume": 840.55013,
+      "unmatched_trade_volume": 14.069779999924208,
+      "seconds": 31.890723399999843
+    },
+    {
+      "session": "20251201T14",
+      "rows": 4001037,
+      "diffs": 4031702,
+      "unknown_order_diffs": 30667,
+      "fill_events": 36484,
+      "fill_volume": 2848.333449999237,
+      "cancel_events": 1967011,
+      "cancel_volume": 1892251.2607176462,
+      "trade_volume": 2865.82083,
+      "unmatched_trade_volume": 17.487380000763096,
+      "seconds": 69.15798559999894
+    },
+    {
+      "session": "20251202T08",
+      "rows": 2452946,
+      "diffs": 2470744,
+      "unknown_order_diffs": 17800,
+      "fill_events": 23698,
+      "fill_volume": 1707.5313199996356,
+      "cancel_events": 1205535,
+      "cancel_volume": 1018500.2088553938,
+      "trade_volume": 1769.1154200000003,
+      "unmatched_trade_volume": 61.58410000036474,
+      "seconds": 34.31885119999788
+    },
+    {
+      "session": "20251202T14",
+      "rows": 4766912,
+      "diffs": 4808729,
+      "unknown_order_diffs": 41821,
+      "fill_events": 49791,
+      "fill_volume": 4462.815139999756,
+      "cancel_events": 2339637,
+      "cancel_volume": 2058020.3282337838,
+      "trade_volume": 4592.15212,
+      "unmatched_trade_volume": 129.33698000024378,
+      "seconds": 87.62248309999995
+    },
+    {
+      "session": "20251203T08",
+      "rows": 2605854,
+      "diffs": 2622419,
+      "unknown_order_diffs": 16569,
+      "fill_events": 19658,
+      "fill_volume": 929.3678400000704,
+      "cancel_events": 1285047,
+      "cancel_volume": 1269631.70330552,
+      "trade_volume": 950.68729,
+      "unmatched_trade_volume": 21.31944999992959,
+      "seconds": 34.43239719999838
+    },
+    {
+      "session": "20251203T14",
+      "rows": 5485893,
+      "diffs": 5536288,
+      "unknown_order_diffs": 50401,
+      "fill_events": 64993,
+      "fill_volume": 6643.270160001064,
+      "cancel_events": 2687374,
+      "cancel_volume": 2450221.777296808,
+      "trade_volume": 6863.12212,
+      "unmatched_trade_volume": 219.85195999893585,
+      "seconds": 95.92997520000063
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{"timestamp":1,"coin":"BTC","type":"open","oid":1001,"side":"B","px":"100.0","sz":"5"}
+{"timestamp":2,"coin":"BTC","type":"open","oid":2001,"side":"A","px":"100.1","sz":"5"}
+{"timestamp":3,"coin":"BTC","type":"open","oid":1002,"side":"B","px":"99.9","sz":"5"}
+{"timestamp":4,"coin":"BTC","type":"open","oid":2002,"side":"A","px":"100.2","sz":"5"}
+{"timestamp":5,"coin":"BTC","type":"fill","oid":1001,"sz":"5"}
+{"timestamp":6,"coin":"BTC","type":"fill","oid":2001,"sz":"5"}
+{"timestamp":7,"coin":"BTC","type":"open","oid":1003,"side":"B","px":"100.0","sz":"5"}
+{"timestamp":8,"coin":"BTC","type":"open","oid":2003,"side":"A","px":"100.1","sz":"5"}
+{"timestamp":9,"coin":"BTC","type":"fill","oid":1003,"sz":"5"}
+{"timestamp":10,"coin":"BTC","type":"fill","oid":2003,"sz":"5"}

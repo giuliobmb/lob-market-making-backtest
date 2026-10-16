@@ -1,0 +1,314 @@
+{
+  "sessions": [
+    {
+      "session": "day01",
+      "symbol": "stock1",
+      "rows": 3454
+    },
+    {
+      "session": "day01",
+      "symbol": "stock2",
+      "rows": 6318
+    },
+    {
+      "session": "day01",
+      "symbol": "stock3",
+      "rows": 4922
+    },
+    {
+      "session": "day01",
+      "symbol": "stock4",
+      "rows": 10719
+    },
+    {
+      "session": "day01",
+      "symbol": "stock5",
+      "rows": 14099
+    },
+    {
+      "session": "day01",
+      "symbol": "*",
+      "segments": 5,
+      "seconds": 10.481659200002468
+    },
+    {
+      "session": "day02",
+      "symbol": "stock1",
+      "rows": 5079
+    },
+    {
+      "session": "day02",
+      "symbol": "stock2",
+      "rows": 6122
+    },
+    {
+      "session": "day02",
+      "symbol": "stock3",
+      "rows": 5965
+    },
+    {
+      "session": "day02",
+      "symbol": "stock4",
+      "rows": 6712
+    },
+    {
+      "session": "day02",
+      "symbol": "stock5",
+      "rows": 14519
+    },
+    {
+      "session": "day02",
+      "symbol": "*",
+      "segments": 5,
+      "seconds": 10.127267500000016
+    },
+    {
+      "session": "day03",
+      "symbol": "stock1",
+      "rows": 3903
+    },
+    {
+      "session": "day03",
+      "symbol": "stock2",
+      "rows": 5411
+    },
+    {
+      "session": "day03",
+      "symbol": "stock3",
+      "rows": 4027
+    },
+    {
+      "session": "day03",
+      "symbol": "stock4",
+      "rows": 5186
+    },
+    {
+      "session": "day03",
+      "symbol": "stock5",
+      "rows": 10008
+    },
+    {
+      "session": "day03",
+      "symbol": "*",
+      "segments": 5,
+      "seconds": 6.770008399998915
+    },
+    {
+      "session": "day04",
+      "symbol": "stock1",
+      "rows": 2806
+    },
+    {
+      "session": "day04",
+      "symbol": "stock2",
+      "rows": 6992
+    },
+    {
+      "session": "day04",
+      "symbol": "stock3",
+      "rows": 5342
+    },
+    {
+      "session": "day04",
+      "symbol": "stock4",
+      "rows": 10819
+    },
+    {
+      "session": "day04",
+      "symbol": "stock5",
+      "rows": 11064
+    },
+    {
+      "session": "day04",
+      "symbol": "*",
+      "segments": 5,
+      "seconds": 10.265220400000544
+    },
+    {
+      "session": "day05",
+      "symbol": "stock1",
+      "rows": 3030
+    },
+    {
+      "session": "day05",
+      "symbol": "stock2",
+      "rows": 6728
+    },
+    {
+      "session": "day05",
+      "symbol": "stock3",
+      "rows": 5946
+    },
+    {
+      "session": "day05",
+      "symbol": "stock4",
+      "rows": 6378
+    },
+    {
+      "session": "day05",
+      "symbol": "stock5",
+      "rows": 12703
+    },
+    {
+      "session": "day05",
+      "symbol": "*",
+      "segments": 5,
+      "seconds": 9.350094999997964
+    },
+    {
+      "session": "day06",
+      "symbol": "stock1",
+      "rows": 2263
+    },
+    {
+      "session": "day06",
+      "symbol": "stock2",
+      "rows": 6243
+    },
+    {
+      "session": "day06",
+      "symbol": "stock3",
+      "rows": 5607
+    },
+    {
+      "session": "day06",
+      "symbol": "stock4",
+      "rows": 7007
+    },
+    {
+      "session": "day06",
+      "symbol": "stock5",
+      "rows": 18032
+    },
+    {
+      "session": "day06",
+      "symbol": "*",
+      "segments": 5,
+      "seconds": 11.37346609999804
+    },
+    {
+      "session": "day07",
+      "symbol": "stock1",
+      "rows": 2801
+    },
+    {
+      "session": "day07",
+      "symbol": "stock2",
+      "rows": 7060
+    },
+    {
+      "session": "day07",
+      "symbol": "stock3",
+      "rows": 6740
+    },
+    {
+      "session": "day07",
+      "symbol": "stock4",
+      "rows": 7854
+    },
+    {
+      "session": "day07",
+      "symbol": "stock5",
+      "rows": 12891
+    },
+    {
+      "session": "day07",
+      "symbol": "*",
+      "segments": 5,
+      "seconds": 10.622596299999714
+    },
+    {
+      "session": "day08",
+      "symbol": "stock1",
+      "rows": 2647
+    },
+    {
+      "session": "day08",
+      "symbol": "stock2",
+      "rows": 8662
+    },
+    {
+      "session": "day08",
+      "symbol": "stock3",
+      "rows": 8591
+    },
+    {
+      "session": "day08",
+      "symbol": "stock4",
+      "rows": 13229
+    },
+    {
+      "session": "day08",
+      "symbol": "stock5",
+      "rows": 22349
+    },
+    {
+      "session": "day08",
+      "symbol": "*",
+      "segments": 5,
+      "seconds": 20.11591159999807
+    },
+    {
+      "session": "day09",
+      "symbol": "stock1",
+      "rows": 1873
+    },
+    {
+      "session": "day09",
+      "symbol": "stock2",
+      "rows": 9271
+    },
+    {
+      "session": "day09",
+      "symbol": "stock3",
+      "rows": 10036
+    },
+    {
+      "session": "day09",
+      "symbol": "stock4",
+      "rows": 12880
+    },
+    {
+      "session": "day09",
+      "symbol": "stock5",
+      "rows": 18112
+    },
+    {
+      "session": "day09",
+      "symbol": "*",
+      "segments": 5,
+      "seconds": 17.637981399999262
+    },
+    {
+      "session": "day10",
+      "symbol": "stock1",
+      "rows": 1888
+    },
+    {
+      "session": "day10",
+      "symbol": "stock2",
+      "rows": 5128
+    },
+    {
+      "session": "day10",
+      "symbol": "stock3",
+      "rows": 5722
+    },
+    {
+      "session": "day10",
+      "symbol": "stock4",
+      "rows": 5821
+    },
+    {
+      "session": "day10",
+      "symbol": "stock5",
+      "rows": 13378
+    },
+    {
+      "session": "day10",
+      "symbol": "*",
+      "segments": 5,
+      "seconds": 8.488628800001607
+    }
+  ]
+}

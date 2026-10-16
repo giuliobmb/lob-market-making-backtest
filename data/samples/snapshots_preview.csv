@@ -1,0 +1,4 @@
+dataset,event_index,best_bid,bid_size,best_ask,ask_size,midpoint,spread
+FI-2010 reale,0,0.2606,0.00326,0.2615,0.00353,0.26105,0.0009000000000000119
+ITCH sintetico,2,100.0,5.0,100.01,5.0,100.005,0.010000000000005116
+Hyperliquid reale,3,86373.0,0.17363,86394.0,0.11005,86383.5,21.0
