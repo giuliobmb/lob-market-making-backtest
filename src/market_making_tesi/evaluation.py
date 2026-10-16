@@ -144,3 +144,44 @@ def session_statistics(frame: pd.DataFrame, value: str, by: list[str]) -> pd.Dat
                      "ic95_basso": low, "ic95_alto": high,
                      "quota_positive": float((group[value] > 0).mean())})
     return pd.DataFrame(rows)
+
+
+def grouped_bootstrap_distribution(values, groups, n: int = 10_000, seed: int = 0) -> np.ndarray:
+    """Distribuzione bootstrap della media ricampionando gruppi interi (es. giornate).
+
+    A ogni replica si estraggono con reinserimento tante sessioni quante sono le
+    sessioni distinte; tutte le righe di una sessione estratta (tutti i titoli di
+    quella giornata) entrano insieme nel campione, e si calcola la media delle righe.
+    """
+    frame = pd.DataFrame({"value": np.asarray(values, dtype=float), "group": np.asarray(groups)})
+    frame = frame[np.isfinite(frame["value"])]
+    if frame.empty:
+        return np.array([float("nan")])
+    sums = frame.groupby("group")["value"].sum()
+    counts = frame.groupby("group")["value"].size()
+    rng = np.random.default_rng(seed)
+    picks = rng.integers(0, len(sums), size=(n, len(sums)))
+    return sums.to_numpy()[picks].sum(axis=1) / counts.to_numpy()[picks].sum(axis=1)
+
+
+def grouped_bootstrap_ci(values, groups, n: int = 10_000, alpha: float = 0.05,
+                         seed: int = 0) -> tuple[float, float, float]:
+    """Media e intervallo bootstrap percentile con ricampionamento per sessione."""
+    values = np.asarray(values, dtype=float)
+    finite = values[np.isfinite(values)]
+    if finite.size == 0:
+        return (float("nan"),) * 3
+    draws = grouped_bootstrap_distribution(values, groups, n, seed)
+    low, high = np.quantile(draws, [alpha / 2, 1 - alpha / 2])
+    return float(finite.mean()), float(low), float(high)
+
+
+def sample_counts(frame: pd.DataFrame, session: str = "session") -> dict[str, int]:
+    """Sessioni indipendenti (giornate o ore) e titolo-sessioni (righe)."""
+    return {"n_sessioni_indipendenti": int(frame[session].nunique()), "n_titolo_sessioni": int(len(frame))}
+
+
+def order_fill_rate(frame: pd.DataFrame) -> pd.Series:
+    """Quota di quote inserite eseguite almeno in parte (per riga di risultato)."""
+    filled_legs = 2 * frame["pairs_bilateral"] + frame["pairs_unilateral"]
+    return filled_legs / frame["placed_orders"].where(frame["placed_orders"] > 0)

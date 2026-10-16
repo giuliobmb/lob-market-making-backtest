@@ -128,8 +128,11 @@ def validation_grid(validation: pd.DataFrame, dataset: str, metric: str) -> pd.D
 
 
 def filter_effect(test: pd.DataFrame, ablation: pd.DataFrame, dataset: str, value: str) -> pd.DataFrame:
-    """Confronto appaiato per sessione: strategia con filtro di volatilità e sempre attiva."""
-    from .evaluation import bootstrap_mean_ci
+    """Confronto appaiato: strategia con filtro di volatilità e sempre attiva.
+
+    L'intervallo della differenza ricampiona le sessioni (giornate o ore) intere.
+    """
+    from .evaluation import grouped_bootstrap_ci
     keys = ["session", "symbol", "model"]
     on = test[test.dataset == dataset].set_index(keys)
     off = ablation[ablation.dataset == dataset].set_index(keys)
@@ -137,7 +140,7 @@ def filter_effect(test: pd.DataFrame, ablation: pd.DataFrame, dataset: str, valu
     for model in [m for m in MODEL_ORDER if m in on.index.get_level_values("model")]:
         a = on.xs(model, level="model")
         b = off.xs(model, level="model").reindex(a.index)
-        mean, low, high = bootstrap_mean_ci(a[value] - b[value])
+        mean, low, high = grouped_bootstrap_ci(a[value] - b[value], a.index.get_level_values("session"))
         rows.append({"modello": LABELS[model], "sessioni": len(a), "con filtro": a[value].mean(),
                      "sempre attiva": b[value].mean(),
                      "differenza": mean, "IC95 basso": low, "IC95 alto": high,
@@ -174,8 +177,8 @@ VARIANT_LABELS = {"base": "base", "skew": "inventory skew", "imbalance": "filtro
 
 def variant_effect(test: pd.DataFrame, variants: pd.DataFrame, dataset: str, value: str,
                    model: str = "queue", fee_column: str | None = None) -> pd.DataFrame:
-    """Varianti contro strategia base sulle stesse sessioni (differenza appaiata, IC bootstrap)."""
-    from .evaluation import bootstrap_mean_ci
+    """Varianti contro strategia base sulle stesse sessioni (differenza appaiata, IC bootstrap per sessione)."""
+    from .evaluation import grouped_bootstrap_ci
     keys = ["session", "symbol"]
     base = test[(test.dataset == dataset) & (test.model == model)].set_index(keys)
     rows = []
@@ -188,8 +191,9 @@ def variant_effect(test: pd.DataFrame, variants: pd.DataFrame, dataset: str, val
             if frame.empty:
                 continue
         frame = frame.reindex(base.index)
-        mean, low, high = bootstrap_mean_ci(frame[value])
-        diff, dlow, dhigh = bootstrap_mean_ci(frame[value] - base[value])
+        days = frame.index.get_level_values("session")
+        mean, low, high = grouped_bootstrap_ci(frame[value], days)
+        diff, dlow, dhigh = grouped_bootstrap_ci(frame[value] - base[value], days)
         fees = -frame[fee_column].mean() if fee_column else 0.0
         rows.append({
             "variante": VARIANT_LABELS[name], "sessioni": len(frame), "P&L netto medio": mean,
@@ -304,3 +308,65 @@ def nel(value, decimals: int = 0) -> str:
     text = pct(value, decimals)
     elided = text.startswith(("8", "11", "1%", "1,")) and not text.startswith(("18", "1%0"))
     return f"nell'{text}" if elided else f"nel {text}"
+
+
+
+# --- tabelle principali e didascalie ---------------------------------------------------------
+SESSION_UNITS = {"fi2010": "giornate", "itch": "giornate", "hyperliquid": "ore"}
+
+
+def model_table_grouped(test: pd.DataFrame, dataset: str, value: str) -> pd.DataFrame:
+    """Come ``model_table`` ma con IC bootstrap per sessione (giornata o ora)."""
+    from .evaluation import grouped_bootstrap_ci
+    frame = test[test.dataset == dataset]
+    rows = {}
+    for model in [m for m in MODEL_ORDER if m in set(frame.model)]:
+        g = frame[frame.model == model]
+        mean, low, high = grouped_bootstrap_ci(g[value], g.session)
+        rows[LABELS[model]] = {"sessioni": len(g), "media": mean, "ic95_basso": low, "ic95_alto": high,
+                               "quota_positive": float((g[value] > 0).mean())}
+    return pd.DataFrame(rows).T
+
+
+def overview_table(test: pd.DataFrame, dataset: str, value: str, decimals: int = 2) -> pd.DataFrame:
+    """Tabella principale: campione, P&L con IC per sessione, fill rate e turnover per modello."""
+    from .evaluation import bootstrap_mean_ci, grouped_bootstrap_ci, order_fill_rate, sample_counts
+    frame = test[test.dataset == dataset]
+    rows = {}
+    for model in [m for m in MODEL_ORDER if m in set(frame.model)]:
+        g = frame[frame.model == model]
+        counts = sample_counts(g)
+        mean, low, high = grouped_bootstrap_ci(g[value], g.session)
+        _, rlow, rhigh = bootstrap_mean_ci(g[value])
+        rows[LABELS[model]] = {
+            f"{SESSION_UNITS[dataset]} indipendenti": counts["n_sessioni_indipendenti"],
+            "titolo-sessioni": counts["n_titolo_sessioni"],
+            "P&L netto medio (IC 95% per sessione)": ci_text(mean, low, high, decimals),
+            "IC 95% per riga (confronto)": f"({it(rlow, decimals)}; {it(rhigh, decimals)})",
+            "titolo-sessioni positive": pct((g[value] > 0).mean(), 0),
+            "quote eseguite (fill rate)": pct(order_fill_rate(g).mean(), 1),
+            "turnover medio": it(g["turnover"].mean(), 2 if g["turnover"].mean() < 100 else 0),
+        }
+    return pd.DataFrame(rows).T
+
+
+def caption(what: str, result: str, limit: str) -> None:
+    """Didascalia sotto un grafico: cosa misura, cosa mostra, quale limite."""
+    from IPython.display import Markdown, display
+    display(Markdown(f"*Figura.* {what} {result} *Limite:* {limit}"))
+
+
+def data_available(root, *parts) -> bool:
+    """True se il percorso dei dati locali esiste (i dati grezzi non sono nel repository)."""
+    from pathlib import Path
+    return Path(root, *parts).exists()
+
+
+def show_saved_figure(root, name: str, reason: str) -> None:
+    """Mostra il grafico salvato quando i dati per ricalcolarlo non sono presenti."""
+    from pathlib import Path
+    from IPython.display import Image, Markdown, display
+    display(Markdown(f"*{reason} Si mostra il grafico salvato in `results/figures/{name}`.*"))
+    path = Path(root) / "results" / "figures" / name
+    if path.exists():
+        display(Image(filename=str(path)))

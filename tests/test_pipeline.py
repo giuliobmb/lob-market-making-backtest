@@ -3,6 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 from market_making_tesi import storage
@@ -193,6 +194,42 @@ class ClockTimeVolatility(unittest.TestCase):
         # Un rendimento per intervallo: la stima non cambia dentro lo stesso intervallo.
         same = [v for ts, v in zip(times, values) if ts // 10 == times[-1] // 10]
         self.assertEqual(len(set(same)), 1)
+
+
+class GroupedBootstrap(unittest.TestCase):
+    def setUp(self):
+        # Due giornate con tre titoli ciascuna: valori identici dentro la giornata.
+        self.values = [1.0, 1.0, 1.0, -1.0, -1.0, -1.0]
+        self.groups = ["d1", "d1", "d1", "d2", "d2", "d2"]
+
+    def test_symbols_of_a_session_are_resampled_together(self):
+        from market_making_tesi.evaluation import grouped_bootstrap_distribution
+        draws = grouped_bootstrap_distribution(self.values, self.groups, n=2000, seed=1)
+        # Con le giornate intere le medie possibili sono solo 1, 0 e -1; con righe singole
+        # comparirebbero valori come 1/3.
+        self.assertTrue(set(np.round(draws, 9)) <= {1.0, 0.0, -1.0})
+        self.assertEqual(set(np.round(draws, 9)), {1.0, 0.0, -1.0})
+
+    def test_deterministic_with_fixed_seed(self):
+        from market_making_tesi.evaluation import grouped_bootstrap_ci
+        first = grouped_bootstrap_ci(self.values, self.groups, seed=7)
+        self.assertEqual(first, grouped_bootstrap_ci(self.values, self.groups, seed=7))
+        mean, low, high = first
+        self.assertEqual(mean, 0.0)
+        self.assertTrue(low <= mean <= high)
+
+    def test_unequal_group_sizes_use_row_mean(self):
+        from market_making_tesi.evaluation import grouped_bootstrap_distribution
+        draws = grouped_bootstrap_distribution([3.0, 3.0, 0.0], ["a", "a", "b"], n=500, seed=0)
+        # Campione {a, b}: media delle tre righe = 2; {a, a} = 3; {b, b} = 0.
+        self.assertTrue(set(np.round(draws, 9)) <= {3.0, 2.0, 0.0})
+
+    def test_sample_counts_and_fill_rate(self):
+        from market_making_tesi.evaluation import order_fill_rate, sample_counts
+        frame = pd.DataFrame({"session": ["d1", "d1", "d2"], "pairs_bilateral": [1, 0, 2],
+                              "pairs_unilateral": [1, 2, 0], "placed_orders": [6, 4, 4]})
+        self.assertEqual(sample_counts(frame), {"n_sessioni_indipendenti": 2, "n_titolo_sessioni": 3})
+        self.assertEqual(order_fill_rate(frame).round(3).tolist(), [0.5, 0.5, 1.0])
 
 
 if __name__ == "__main__":

@@ -105,6 +105,24 @@ sulle stesse sessioni di test (`results/variants.csv`).
 - **Stress:** latenza crescente sul modello a coda; costi e liquidazione al
   midpoint come scenari sui fill, perché non cambiano le decisioni.
 
+**Intervalli di confidenza.** I titoli della stessa giornata non sono indipendenti:
+l'intervallo principale è un bootstrap che ricampiona giornate (o ore) intere con
+tutti i loro titoli (`evaluation.grouped_bootstrap_ci`, seme fisso). Il bootstrap per
+riga resta come confronto. Con 5 giornate ITCH e 4 ore Hyperliquid l'intervallo è
+approssimato.
+
 I risultati sono in `results/` (`test.csv`, `validation.csv`, `stress.csv`,
 `ablation.csv`, `quality.csv`, `calibration.csv`, `selected_params.json`, figure e singole
 simulazioni in `results/runs/`).
+
+### Tabelle generate dai notebook
+
+`results/tabella_riepilogo.csv` (notebook 06) ha una riga per dataset e modello di
+esecuzione con: `misura del P&L` (unità del P&L: unità normalizzate per FI-2010, USD
+per titolo-giorno per ITCH, USD per ora per Hyperliquid), `sessioni indipendenti`
+(giornate od ore distinte), `titolo-sessioni`, `P&L netto medio (IC 95% per
+sessione)`, `IC 95% per riga (confronto)`, `titolo-sessioni positive`, `quote
+eseguite (fill rate)` (quote eseguite almeno in parte / quote inserite) e `turnover
+medio`. Il P&L netto usa `net_nasdaq_base` per ITCH, `net_tier0` per Hyperliquid e
+`final_equity` (senza costi) per FI-2010. `tabella_filtro_volatilita.csv` e
+`tabella_varianti.csv` contengono i confronti appaiati con intervalli per sessione.
