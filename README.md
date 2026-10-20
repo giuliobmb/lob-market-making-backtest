@@ -70,6 +70,28 @@ non rientra. Finestra e soglia (quantile 50%, 75% o 90% della volatilità di
 calibrazione) sono scelte in validazione; l'ablazione misura il contributo del
 filtro ripetendo il test con la strategia sempre attiva.
 
+A ogni record del feed (snapshot L2 o messaggio order-level) il simulatore esegue,
+sempre nello stesso ordine (`engine.Simulator.step`):
+
+1. **esecuzioni**: il modello di fill valuta gli ordini entrati in un record
+   precedente (mai nello stesso record dell'inserimento);
+2. **latenza**: attiva ordini e cancellazioni il cui ritardo è trascorso; un ordine
+   che attraverserebbe il book viene rifiutato (post-only);
+3. **volatilità**: aggiorna la stima causale σ con il nuovo midpoint;
+4. **rischio** (`MarketMakingStrategy.risk`): se σ > σ* cancella e liquida; se la
+   coppia ha superato la durata *T* cancella e liquida l'inventario residuo; se
+   resta inventario senza ordini aperti lo liquida;
+5. **quote** (`MarketMakingStrategy.quote`): con σ definita e sotto soglia,
+   inventario nullo, nessun ordine aperto e spread positivo, inserisce un acquisto
+   di *Q* al best bid e una vendita di *Q* al best ask, con scadenza *T*;
+6. **registrazione** di cassa, inventario e valore al midpoint.
+
+La liquidazione è un ordine taker al best opposto (vendita al best bid, acquisto al
+best ask). A fine sessione la posizione è chiusa. Il notebook `00_setup` (sezione 3)
+riporta notazione, parametri scelti, pseudocodice completo (strategia, regole di
+esecuzione, varianti), il codice sorgente eseguito e un esempio numerico passo per
+passo.
+
 La regola non implementa un modello ottimo ma ne riprende i risultati qualitativi:
 rischio di inventario crescente con la volatilità (Ho e Stoll, 1981; Avellaneda e
 Stoikov, 2008), inventario limitato (Guéant, Lehalle e Fernandez-Tapia, 2013),
